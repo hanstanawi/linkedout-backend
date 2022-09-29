@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ParamsWithId } from 'interfaces/ParamsWithId';
+import { ParamsWithId } from '../../interfaces/ParamsWithId';
 import { validateRequest } from 'zod-express-middleware';
 
 import * as UsersControllers from './users.controllers';

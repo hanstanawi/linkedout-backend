@@ -31,6 +31,9 @@ export function createOne(user: UserModel): Promise<User> {
       birthDate: new Date(birthDate).toISOString(),
       profileImage,
     },
+    include: {
+      workExperiences: true,
+    },
   });
 }
 
