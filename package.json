@@ -6,6 +6,9 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "server": "nodemon src/index.ts",
+    "client": "yarn --cwd client dev",
+    "clientinstall": "yarn --cwd client install",
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
     "build": "tsc",
     "lint": "eslint --fix src test",
     "test": "jest"
