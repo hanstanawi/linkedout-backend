@@ -1,7 +1,7 @@
 import { WorkExperience } from '@prisma/client';
 import type { Request, Response, NextFunction } from 'express';
 
-import { ParamsWithId } from 'interfaces/ParamsWithId';
+import { ParamsWithId } from '../../interfaces/ParamsWithId';
 import { ExperienceModel } from './experiences.model';
 
 import * as ExperiencesServices from './experiences.services';
@@ -13,8 +13,14 @@ export async function getExperienceById(
 ) {
   try {
     const experienceId = req.params.id;
-    const user = await ExperiencesServices.findOne(experienceId);
-    return res.status(200).json(user);
+    const experience = await ExperiencesServices.findOne(experienceId);
+
+    if (!experience) {
+      res.status(404);
+      throw new Error(`Experience with id ${experienceId} not found.`);
+    }
+
+    return res.status(200).json(experience);
   } catch (err: any) {
     next(err);
   }
@@ -42,6 +48,16 @@ export async function updateExperience(
   try {
     const experienceId = req.params.id;
     const updatedUser = req.body;
+    // Find existing experience
+    const existingExperience = await ExperiencesServices.findOne(experienceId);
+
+    if (!existingExperience) {
+      res.status(404);
+      throw new Error(
+        `Experience with id ${experienceId} not found. Could not update`
+      );
+    }
+
     const updatedExperience = await ExperiencesServices.updateOne(
       experienceId,
       updatedUser
@@ -59,6 +75,16 @@ export async function deleteExperience(
 ) {
   try {
     const experienceId = req.params.id;
+    // Find existing experience
+    const existingExperience = await ExperiencesServices.findOne(experienceId);
+
+    if (!existingExperience) {
+      res.status(404);
+      throw new Error(
+        `Experience with id ${experienceId} not found. Could not delete`
+      );
+    }
+
     await ExperiencesServices.deleteOne(experienceId);
     return res.status(204).json(experienceId);
   } catch (err: any) {

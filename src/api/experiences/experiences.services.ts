@@ -3,8 +3,8 @@ import { ExperienceModel } from './experiences.model';
 
 const prisma = new PrismaClient();
 
-export function findOne(experienceId: string): Promise<WorkExperience> {
-  return prisma.workExperience.findUniqueOrThrow({
+export function findOne(experienceId: string): Promise<WorkExperience | null> {
+  return prisma.workExperience.findUnique({
     where: {
       id: experienceId,
     },
@@ -29,7 +29,7 @@ export function createOne(
     data: {
       jobDescription,
       startDate: new Date(startDate).toISOString(),
-      endDate: new Date(endDate || '').toISOString(),
+      endDate: endDate ? new Date(endDate).toISOString() : null,
       companyName,
       companyLogo: companyLogo,
       userId,
@@ -59,7 +59,7 @@ export function updateOne(
     data: {
       jobDescription,
       startDate: new Date(startDate).toISOString(),
-      endDate: new Date(endDate || '').toISOString(),
+      endDate: endDate ? new Date(endDate).toISOString() : null,
       companyName,
       companyLogo: companyLogo,
       userId,
