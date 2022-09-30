@@ -14,19 +14,22 @@ datasource db {
 model User {
   id              String           @id @default(uuid())
   createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
   firstName       String
   lastName        String
   birthDate       DateTime
+  about           String?
   profileImage    String?
   workExperiences WorkExperience[]
 }
 
 model WorkExperience {
-  id             String   @id @default(uuid())
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  startDate      String
-  endDate        String?
+  id             String    @id @default(uuid())
+  jobTitle       String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  startDate      DateTime
+  endDate        DateTime?
   isCurrent      Boolean
   companyName    String
   companyLogo    String?
