@@ -11,11 +11,11 @@ export function findOne(experienceId: string): Promise<WorkExperience | null> {
   });
 }
 
-// TODO: add job title to prisma schema
 export function createOne(
   experience: ExperienceModel
 ): Promise<WorkExperience> {
   const {
+    jobTitle,
     jobDescription,
     startDate,
     endDate,
@@ -27,6 +27,7 @@ export function createOne(
 
   return prisma.workExperience.create({
     data: {
+      jobTitle,
       jobDescription,
       startDate: new Date(startDate).toISOString(),
       endDate: endDate ? new Date(endDate).toISOString() : null,
@@ -43,6 +44,7 @@ export function updateOne(
   experience: ExperienceModel
 ): Promise<WorkExperience> {
   const {
+    jobTitle,
     jobDescription,
     startDate,
     endDate,
@@ -57,6 +59,7 @@ export function updateOne(
       id: experienceId,
     },
     data: {
+      jobTitle,
       jobDescription,
       startDate: new Date(startDate).toISOString(),
       endDate: endDate ? new Date(endDate).toISOString() : null,

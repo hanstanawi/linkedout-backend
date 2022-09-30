@@ -23,13 +23,14 @@ export function findOneById(userId: string): Promise<User | null> {
 }
 
 export function createOne(user: UserModel): Promise<User> {
-  const { firstName, lastName, birthDate, profileImage } = user;
+  const { firstName, lastName, birthDate, profileImage, about } = user;
   return prisma.user.create({
     data: {
       firstName,
       lastName,
       birthDate: new Date(birthDate).toISOString(),
       profileImage,
+      about,
     },
     include: {
       workExperiences: true,
@@ -38,7 +39,7 @@ export function createOne(user: UserModel): Promise<User> {
 }
 
 export function updateOne(userId: string, user: UserModel): Promise<User> {
-  const { firstName, lastName, birthDate, profileImage } = user;
+  const { firstName, lastName, birthDate, profileImage, about } = user;
   return prisma.user.update({
     where: {
       id: userId,
@@ -48,6 +49,7 @@ export function updateOne(userId: string, user: UserModel): Promise<User> {
       lastName,
       birthDate: new Date(birthDate).toISOString(),
       profileImage,
+      about,
     },
     include: {
       workExperiences: true,
