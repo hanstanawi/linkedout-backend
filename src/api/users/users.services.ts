@@ -11,8 +11,8 @@ export function findAll(): Promise<User[]> {
   });
 }
 
-export function findOneById(userId: string): Promise<User> {
-  return prisma.user.findUniqueOrThrow({
+export function findOneById(userId: string): Promise<User | null> {
+  return prisma.user.findUnique({
     include: {
       workExperiences: true,
     },

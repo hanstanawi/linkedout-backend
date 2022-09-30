@@ -26,6 +26,12 @@ export async function findUserById(
   try {
     const userId = req.params.id as string;
     const user = await UsersServices.findOneById(userId);
+
+    if (!user) {
+      res.status(404);
+      throw new Error(`User with id ${userId} not found.`);
+    }
+
     return res.status(200).json(user);
   } catch (err: any) {
     next(err);
@@ -54,6 +60,13 @@ export async function updateUser(
   try {
     const userId = req.params.id;
     const updatedUser = req.body;
+    const existingUser = await UsersServices.findOneById(userId);
+
+    if (!existingUser) {
+      res.status(404);
+      throw new Error(`User with id ${userId} not found. Could not update`);
+    }
+
     const user = await UsersServices.updateOne(userId, updatedUser);
     return res.status(201).json(user);
   } catch (err: any) {
@@ -68,8 +81,15 @@ export async function deleteUser(
 ) {
   try {
     const userId = req.params.id;
+    const user = await UsersServices.findOneById(userId);
+
+    if (!user) {
+      res.status(404);
+      throw new Error(`User with id ${userId} not found. Could not delete`);
+    }
+
     const deletedUserId = await UsersServices.deleteOne(userId);
-    return res.status(200).json(deletedUserId);
+    return res.status(204).json(deletedUserId);
   } catch (err: any) {
     next(err);
   }
