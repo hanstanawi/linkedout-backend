@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { ParamsWithId } from 'interfaces/ParamsWithId';
 import { validateRequest } from 'zod-express-middleware';
 
 import * as ExperiencesControllers from './experiences.controllers';
 import { ExperienceModel } from './experiences.model';
+import { ParamsWithId } from '../../interfaces/ParamsWithId';
 
 const router = Router();
 
