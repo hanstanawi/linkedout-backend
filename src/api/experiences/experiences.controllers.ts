@@ -47,7 +47,7 @@ export async function updateExperience(
 ) {
   try {
     const experienceId = req.params.id;
-    const updatedUser = req.body;
+    const experience = req.body;
     // Find existing experience
     const existingExperience = await ExperiencesServices.findOne(experienceId);
 
@@ -60,7 +60,7 @@ export async function updateExperience(
 
     const updatedExperience = await ExperiencesServices.updateOne(
       experienceId,
-      updatedUser
+      experience
     );
     return res.status(201).json(updatedExperience);
   } catch (err: any) {
