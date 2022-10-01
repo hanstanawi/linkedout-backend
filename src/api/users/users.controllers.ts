@@ -24,7 +24,7 @@ export async function findUserById(
   next: NextFunction
 ) {
   try {
-    const userId = req.params.id as string;
+    const userId = req.params.id;
     const user = await UsersServices.findOneById(userId);
 
     if (!user) {

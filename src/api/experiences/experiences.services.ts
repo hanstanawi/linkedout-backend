@@ -1,7 +1,6 @@
-import { PrismaClient, WorkExperience } from '@prisma/client';
+import prisma from '../../db';
+import { WorkExperience } from '@prisma/client';
 import { ExperienceModel } from './experiences.model';
-
-const prisma = new PrismaClient();
 
 export function findOne(experienceId: string): Promise<WorkExperience | null> {
   return prisma.workExperience.findUnique({
