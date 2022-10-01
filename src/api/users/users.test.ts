@@ -184,7 +184,7 @@ describe('PUT /api/v1/users', () => {
 });
 
 describe('DELETE /api/v1/users/:id', () => {
-  it('responds with an invalid ObjectId error', (done) => {
+  it('responds with an invalid id error', (done) => {
     request(app)
       .delete('/api/v1/users/adsfadsfasdfasdf')
       .set('Accept', 'application/json')
