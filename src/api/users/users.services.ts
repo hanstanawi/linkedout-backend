@@ -1,7 +1,7 @@
-import { PrismaClient, User } from '@prisma/client';
-import { UserModel } from './users.model';
+import prisma from '../../db';
 
-const prisma = new PrismaClient();
+import { User } from '@prisma/client';
+import { UserModel } from './users.model';
 
 export function findAll(): Promise<User[]> {
   return prisma.user.findMany({
