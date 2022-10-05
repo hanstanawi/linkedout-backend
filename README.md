@@ -2,6 +2,9 @@
 
 REST API built using Node.js, Express.js, Typescript, and PostgreSQL to allow users to create, update profile as well as their work experiences.
 
+Deployed on Heroku: https://work-experience-portfolio.herokuapp.com/api/v1[https://work-experience-portfolio.herokuapp.com/api/v1] to access the API
+PostgreSQL database is hosted on Heroku Postgres
+
 List of Technologies:
 
 * [Express](https://www.npmjs.com/package/express)
@@ -34,20 +37,57 @@ Development utilities:
 * [Supertest](https://www.npmjs.com/package/supertest)
   * HTTP assertions made easy via superagent.
 
-## Setup
+## Install dependencies
 
 ```
 yarn
+
+// or
+
+npm install
 ```
 
 ## Test
 
 ```
 yarn test
+
+// or
+
+npm run test
+
 ```
 
 ## Development
+App will run on port 3000
 
 ```
 yarn server
+
+// or
+
+npm run server
+```
+
+
+## Build
+It runs `tsc` commands that compiles Typescript files to Javascript files to `/dist` directory
+
+```
+yarn build
+
+// or
+
+npm run build
+```
+
+## Run Javascript files (for Deployment)
+It runs `tsc` commands that compiles Typescript files to Javascript files to `/dist` directory
+
+```
+yarn start
+
+// or
+
+npm start
 ```
