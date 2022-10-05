@@ -2,7 +2,7 @@
 
 REST API built using Node.js, Express.js, Typescript, and PostgreSQL to allow users to create, update profile as well as their work experiences.
 
-Deployed on Heroku: https://work-experience-portfolio.herokuapp.com/api/v1[https://work-experience-portfolio.herokuapp.com/api/v1] to access the API
+Deployed on Heroku: Make request to [https://work-experience-portfolio.herokuapp.com/api/v1](https://work-experience-portfolio.herokuapp.com/api/v1) to access the API
 PostgreSQL database is hosted on Heroku Postgres
 
 List of Technologies:
