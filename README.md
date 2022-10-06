@@ -69,7 +69,7 @@ yarn server
 npm run server
 ```
 
-Note: Before running the server, make sure to create `.env` file and copy this config
+Note: Before running the server, make sure to create `.env` file in root directory and copy this config
 ```
 DATABASE_URL="postgres://ytjyftirilvrax:8548983ed487d4c56658c4b0ca2e037ffa8970c70af29d23cd283f2e5df3c141@ec2-54-75-102-122.eu-west-1.compute.amazonaws.com:5432/d21oulglgjqp93"
 SHADOW_DATABASE_URL="postgres://sidczgputwesnf:2daa680c34528133fa045166ff3c7dcd734a676dd46629653ef747d781985fb4@ec2-54-246-185-161.eu-west-1.compute.amazonaws.com:5432/ddd53ssmd30hsb"
