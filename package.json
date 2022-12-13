@@ -7,6 +7,7 @@
     "start": "node dist/index.js",
     "server": "nodemon src/index.ts",
     "build": "tsc",
+    "prisma:deploy": "yarn prisma migrate:deploy",
     "lint": "eslint --fix src test",
     "test": "jest"
   },
