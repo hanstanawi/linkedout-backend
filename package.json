@@ -4,8 +4,7 @@
   "description": "Work Experience API with Typescript",
   "main": "src/index.ts",
   "engines": {
-    "node": ">=16.x <=18.x",
-    "yarn": "1.22.19"
+    "node": ">=16.x <=18.x"
   },
   "scripts": {
     "start": "node dist/index.js",
